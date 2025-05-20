@@ -51,7 +51,7 @@
             <p><b> Вітер:</b> ${data.wind.speed} м/с</p>
           `;
             } else {
-                document.getElementById("result").innerHTML = ` Помилка: ${data.message}`;
+                document.getElementById("result").innerHTML = `  Перевірте або введіть правильну назву міста.`;
             }
         } catch (error) {
             document.getElementById("result").innerHTML = ` Сталася помилка запиту: ${error}`;
