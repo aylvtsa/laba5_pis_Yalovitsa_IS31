@@ -6,7 +6,7 @@
 ## Сценарій використання:
 Користувач відкриває HTML-сторінку `laba5.html`, вводить назву будь-якого міста українською або англійською мовою, після чого:
 1. Відбувається запит до зовнішнього API OpenWeatherMap.
-наприклад: https://api.openweathermap.org/data/2.5/weather?q=Vinnytsia&appid=48c39808b3266fa2549924bf113040c6&units=metric&lang=ua
+наприклад: https://api.openweathermap.org/data/2.5/weather?q=Vinnytsia&appid=804c5b752e9e331700b1bc25509c985a&units=metric&lang=ua
 
 )
 3. API повертає:
