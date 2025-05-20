@@ -6,8 +6,9 @@
 ## Сценарій використання:
 Користувач відкриває HTML-сторінку `laba5.html`, вводить назву будь-якого міста українською або англійською мовою, після чого:
 1. Відбувається запит до зовнішнього API OpenWeatherMap.
-   ```js
-   https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&lang=ua&appid=${API_KEY}
+наприклад: https://api.openweathermap.org/data/2.5/weather?q=Vinnytsia&appid=48c39808b3266fa2549924bf113040c6&units=metric&lang=ua
+
+)
 3. API повертає:
    - Назву міста;
    - Температуру в Цельсіях;
