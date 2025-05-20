@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Прогноз погоди</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background: #f0f8ff;
+        }
+        input, button {
+            padding: 0.5em;
+            font-size: 1em;
+        }
+        #result {
+            margin-top: 1em;
+            padding: 1em;
+            background-color: #e0ffff;
+            border-radius: 8px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Дізнайтесь погоду у вашому місті 🌤️</h1>
+
+<label for="city">Місто:</label>
+<input type="text" id="city" >
+<button onclick="getWeather()">Отримати погоду</button>
+
+<div id="result"></div>
+
+<script>
+    const API_KEY = "48c39808b3266fa2549924bf113040c6";
+
+    async function getWeather() {
+        const city = document.getElementById("city").value;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&lang=ua&appid=${API_KEY}`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            if (response.ok) {
+                document.getElementById("result").innerHTML = `
+            <h3> ${data.name}</h3>
+            <p><b> Температура:</b> ${data.main.temp} °C</p>
+            <p><b> Опис:</b> ${data.weather[0].description}</p>
+            <p><b> Вологість:</b> ${data.main.humidity}%</p>
+            <p><b> Вітер:</b> ${data.wind.speed} м/с</p>
+          `;
+            } else {
+                document.getElementById("result").innerHTML = ` Помилка: ${data.message}`;
+            }
+        } catch (error) {
+            document.getElementById("result").innerHTML = ` Сталася помилка запиту: ${error}`;
+        }
+    }
+</script>
+
+</body>
+</html>
