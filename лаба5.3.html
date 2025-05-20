@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Перевірка особистих даних</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      background: #fdfdfd;
+    }
+    input, button {
+      font-size: 1em;
+      padding: 0.5em;
+      margin: 0.5em 0;
+    }
+    #response {
+      margin-top: 1em;
+      padding: 1em;
+      border: 1px solid #ccc;
+      background: #f3faff;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Відображення особистих даних студента</h1>
+
+<label for="login">Ваш логін у Moodle:</label>
+<input type="text" id="login"  />
+<button onclick="showStudent()">Показати інформацію</button>
+
+<div id="response"></div>
+
+<script>
+
+  const students = {
+    'is-31fiot-23-092': {
+      lastName: 'Яловіца',
+      firstName: 'Анастасія',
+      course: '2',
+      group: 'ІС-31'
+    },
+    'ip-31fiot-23-091': {
+      lastName: 'Яловиця',
+      firstName: 'Олексій',
+      course: '3',
+      group: 'ІП-31'
+    }
+  };
+
+  function showStudent() {
+    const login = document.getElementById("login").value.trim();
+    const student = students[login];
+
+    if (!login) {
+      document.getElementById("response").innerHTML = `<p>️Будь ласка, введіть логін.</p>`;
+    } else if (!student) {
+      document.getElementById("response").innerHTML = `
+          <p> Невірний логін: <strong>${login}</strong></p>
+          <p>Спробуйте ще раз.</p>
+        `;
+    } else {
+      document.getElementById("response").innerHTML = `
+          <h3> Дані знайдено</h3>
+          <p><strong>Логін у Moodle:</strong> ${login}</p>
+          <p><strong>Прізвище:</strong> ${student.lastName}</p>
+          <p><strong>Ім’я:</strong> ${student.firstName}</p>
+          <p><strong>Курс:</strong> ${student.course}</p>
+          <p><strong>Група:</strong> ${student.group}</p>
+        `;
+    }
+  }
+</script>
+
+</body>
+</html>
+
